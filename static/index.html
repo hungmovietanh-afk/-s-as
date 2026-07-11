@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sếp AI — trợ lý riêng chạy bằng model tự xây dựng, không dùng API AI bên ngoài."
+    />
+    <title>Sếp AI — Nhân viên AI riêng</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">S</div>
+          <div>
+            <strong>Sếp AI</strong>
+            <span>FIRST-PARTY CORE</span>
+          </div>
+        </div>
+
+        <button class="new-chat" id="newChatButton" type="button">
+          <span>＋</span> Cuộc trò chuyện mới
+        </button>
+
+        <nav>
+          <p class="nav-label">Không gian làm việc</p>
+          <button class="nav-item active" type="button">
+            <span>◫</span> Trò chuyện
+          </button>
+          <button class="nav-item" id="openTrainingButton" type="button">
+            <span>◇</span> Dạy AI
+          </button>
+          <button class="nav-item" id="openSettingsButton" type="button">
+            <span>⚙</span> Cấu hình
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="engine-card">
+            <div class="engine-row">
+              <span class="status-dot"></span>
+              <span>Engine nội bộ</span>
+            </div>
+            <strong id="modelName">Đang kết nối...</strong>
+            <small id="modelMeta">Không có dữ liệu rời máy chủ</small>
+          </div>
+          <div class="owner">
+            <div class="avatar">VA</div>
+            <div>
+              <strong>Chủ sở hữu</strong>
+              <span>Quyền điều khiển cao nhất</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <button class="menu-button" id="menuButton" type="button" aria-label="Mở menu">☰</button>
+          <div>
+            <strong>Sếp AI Core</strong>
+            <span><i></i> Sẵn sàng nhận lệnh</span>
+          </div>
+          <button class="outline-button" id="headerTrainingButton" type="button">
+            Dạy AI
+          </button>
+        </header>
+
+        <section class="chat" id="chat">
+          <div class="hero" id="hero">
+            <div class="hero-orb"><span>S</span></div>
+            <p class="eyebrow">MODEL THUỘC QUYỀN KIỂM SOÁT CỦA BẠN</p>
+            <h1>Sếp giao việc.<br /><em>Tôi thực thi.</em></h1>
+            <p class="hero-copy">
+              Engine tự xây dựng cho code, sửa lỗi, suy luận và viết prompt.
+              Không API AI. Không model bên ngoài. Dữ liệu ở lại máy chủ của bạn.
+            </p>
+            <div class="capability-grid">
+              <button type="button" data-prompt="Viết code Python cho một REST API có validation và test">
+                <span class="capability-icon purple">&lt;/&gt;</span>
+                <span><strong>Kiến trúc code</strong><small>Thiết kế contract, ca biên và kiểm thử</small></span>
+                <b>→</b>
+              </button>
+              <button type="button" data-prompt="Sửa lỗi code này và giải thích nguyên nhân gốc">
+                <span class="capability-icon red">⌁</span>
+                <span><strong>Sửa lỗi</strong><small>Quét lỗi tĩnh và lập quy trình debug</small></span>
+                <b>→</b>
+              </button>
+              <button type="button" data-prompt="Phân tích sâu cách xây một sản phẩm AI riêng từ số 0">
+                <span class="capability-icon blue">◎</span>
+                <span><strong>Tư duy hệ thống</strong><small>Tách giả định, phương án và kiểm chứng</small></span>
+                <b>→</b>
+              </button>
+              <button type="button" data-prompt="Viết prompt để AI tạo kế hoạch sản phẩm chi tiết">
+                <span class="capability-icon amber">✦</span>
+                <span><strong>Prompt engineering</strong><small>Prompt rõ mục tiêu và tiêu chí hoàn thành</small></span>
+                <b>→</b>
+              </button>
+            </div>
+          </div>
+          <div class="messages" id="messages" aria-live="polite"></div>
+        </section>
+
+        <footer class="composer-wrap">
+          <form class="composer" id="chatForm">
+            <textarea
+              id="messageInput"
+              rows="1"
+              maxlength="20000"
+              placeholder="Giao việc cho AI của bạn..."
+              aria-label="Mệnh lệnh"
+            ></textarea>
+            <div class="composer-bottom">
+              <span class="privacy"><i></i> Xử lý nội bộ</span>
+              <div>
+                <span class="shortcut">Ctrl ↵</span>
+                <button class="send-button" id="sendButton" type="submit" aria-label="Gửi">↑</button>
+              </div>
+            </div>
+          </form>
+          <p class="disclaimer">
+            Model nhỏ tự huấn luyện có giới hạn. Kiểm tra code và quyết định quan trọng trước khi sử dụng.
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="drawer" id="trainingDrawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div>
+          <p class="eyebrow">HUẤN LUYỆN RIÊNG</p>
+          <h2>Dạy AI cách trả lời</h2>
+        </div>
+        <button class="close-button" data-close-drawer type="button">×</button>
+      </div>
+      <p class="drawer-copy">
+        Mỗi ví dụ được lưu trên máy chủ của bạn và dùng để tái huấn luyện bộ phân loại cùng chỉ mục kiến thức.
+      </p>
+      <form id="trainingForm">
+        <label>
+          Mệnh lệnh mẫu
+          <textarea id="trainingInstruction" rows="4" required placeholder="Ví dụ: Viết API quản lý công việc"></textarea>
+        </label>
+        <label>
+          Câu trả lời mong muốn
+          <textarea id="trainingResponse" rows="7" required placeholder="Câu trả lời chuẩn mà AI phải học..."></textarea>
+        </label>
+        <label>
+          Nhóm năng lực
+          <select id="trainingIntent">
+            <option value="code">Viết code</option>
+            <option value="debug">Sửa lỗi</option>
+            <option value="reasoning">Suy luận</option>
+            <option value="prompt">Viết prompt</option>
+            <option value="planning">Lập kế hoạch</option>
+            <option value="general">Trợ lý chung</option>
+          </select>
+        </label>
+        <button class="primary-button" type="submit">Dạy ví dụ này</button>
+        <p class="form-status" id="trainingStatus"></p>
+      </form>
+    </aside>
+
+    <aside class="drawer" id="settingsDrawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div>
+          <p class="eyebrow">BẢO MẬT</p>
+          <h2>Cấu hình chủ sở hữu</h2>
+        </div>
+        <button class="close-button" data-close-drawer type="button">×</button>
+      </div>
+      <form id="settingsForm">
+        <label>
+          Khóa chủ sở hữu
+          <input id="ownerKey" type="password" autocomplete="off" placeholder="Chỉ cần khi server bật xác thực" />
+        </label>
+        <p class="field-help">Khóa chỉ lưu trong session của tab này, không ghi vào lịch sử chat.</p>
+        <button class="primary-button" type="submit">Lưu cho phiên này</button>
+        <p class="form-status" id="settingsStatus"></p>
+      </form>
+      <div class="stats-card">
+        <p class="nav-label">THÔNG SỐ MODEL</p>
+        <dl id="modelStats">
+          <div><dt>Kiến trúc</dt><dd>—</dd></div>
+          <div><dt>Dữ liệu học</dt><dd>—</dd></div>
+          <div><dt>Từ vựng</dt><dd>—</dd></div>
+          <div><dt>Bộ nhớ</dt><dd>—</dd></div>
+        </dl>
+      </div>
+    </aside>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

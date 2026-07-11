@@ -1,0 +1,152 @@
+[
+  {
+    "intent": "code",
+    "instruction": "Viết code Python có cấu trúc rõ ràng và dễ test",
+    "response": "Tôi sẽ chốt contract, tách logic thuần khỏi I/O, validate dữ liệu tại biên và viết test cho luồng chính cùng ca biên."
+  },
+  {
+    "intent": "code",
+    "instruction": "Tạo một REST API",
+    "response": "Hãy xác định resource, method, schema request-response, mã lỗi, auth và tính idempotent trước khi chọn framework."
+  },
+  {
+    "intent": "code",
+    "instruction": "Viết component React TypeScript",
+    "response": "Component nên có props được định kiểu cụ thể, trạng thái tối thiểu, xử lý loading-error-empty và test hành vi người dùng."
+  },
+  {
+    "intent": "code",
+    "instruction": "Tối ưu thuật toán xử lý danh sách lớn",
+    "response": "Trước tiên đo kích thước đầu vào và điểm nghẽn, sau đó so sánh độ phức tạp thời gian, bộ nhớ và chi phí I/O."
+  },
+  {
+    "intent": "code",
+    "instruction": "Thiết kế database cho ứng dụng",
+    "response": "Bắt đầu từ truy vấn và invariant, chuẩn hóa dữ liệu cốt lõi, thêm index theo access pattern và thiết kế migration có rollback."
+  },
+  {
+    "intent": "debug",
+    "instruction": "Sửa bug trong đoạn code này",
+    "response": "Gửi code, stack trace, đầu vào gây lỗi và kết quả mong muốn; tôi sẽ tạo ca tái hiện nhỏ nhất rồi sửa nguyên nhân gốc."
+  },
+  {
+    "intent": "debug",
+    "instruction": "Ứng dụng bị crash với exception",
+    "response": "Đọc stack trace từ trên xuống nhưng bắt đầu điều tra ở frame đầu tiên thuộc code dự án, rồi kiểm tra giá trị ngay trước dòng lỗi."
+  },
+  {
+    "intent": "debug",
+    "instruction": "Code chạy chậm không rõ lý do",
+    "response": "Đo trước khi tối ưu: tách CPU, I/O, database và network; dùng profiler rồi tối ưu điểm chiếm tỷ trọng lớn nhất."
+  },
+  {
+    "intent": "debug",
+    "instruction": "Test lúc chạy lúc fail",
+    "response": "Kiểm tra phụ thuộc thời gian, thứ tự, random, dữ liệu dùng chung và network; cố định seed và cô lập trạng thái để tái hiện."
+  },
+  {
+    "intent": "debug",
+    "instruction": "API trả về sai dữ liệu",
+    "response": "So sánh contract với dữ liệu thực tại từng lớp: request parsing, business logic, query, mapping và serialization."
+  },
+  {
+    "intent": "reasoning",
+    "instruction": "Phân tích vấn đề này thật sâu",
+    "response": "Tôi sẽ tách mục tiêu, dữ kiện, giả định, ràng buộc, các phương án, phản ví dụ và phép kiểm chứng trước khi kết luận."
+  },
+  {
+    "intent": "reasoning",
+    "instruction": "So sánh hai phương án kỹ thuật",
+    "response": "So sánh theo hiệu năng, độ phức tạp, chi phí vận hành, bảo mật, khả năng đảo ngược và mức phù hợp với đội ngũ."
+  },
+  {
+    "intent": "reasoning",
+    "instruction": "Tại sao giải pháp này không hiệu quả",
+    "response": "Tách triệu chứng khỏi nguyên nhân, xác định giả định sai và tìm phép đo có thể bác bỏ từng giả thuyết."
+  },
+  {
+    "intent": "reasoning",
+    "instruction": "Đưa ra quyết định khi thiếu thông tin",
+    "response": "Ưu tiên hành động nhỏ, rẻ và có thể đảo ngược giúp giảm bất định lớn nhất; ghi rõ giả định và ngưỡng đổi quyết định."
+  },
+  {
+    "intent": "reasoning",
+    "instruction": "Đánh giá rủi ro của dự án",
+    "response": "Chấm xác suất và tác động, xác định tín hiệu cảnh báo sớm, người chịu trách nhiệm và phương án giảm thiểu hoặc phục hồi."
+  },
+  {
+    "intent": "prompt",
+    "instruction": "Viết prompt tốt cho AI",
+    "response": "Prompt tốt cần vai trò, mục tiêu, bối cảnh, dữ liệu đầu vào, ràng buộc, quy trình, định dạng đầu ra và tiêu chí hoàn thành."
+  },
+  {
+    "intent": "prompt",
+    "instruction": "Cải thiện câu lệnh AI này",
+    "response": "Tôi sẽ loại bỏ mơ hồ, bổ sung đầu ra có thể kiểm chứng, ví dụ cần thiết và quy tắc xử lý khi thiếu dữ liệu."
+  },
+  {
+    "intent": "prompt",
+    "instruction": "Tạo system prompt cho trợ lý code",
+    "response": "System prompt nên định nghĩa phạm vi, tiêu chuẩn code, cách dùng công cụ, quy trình kiểm tra và hành vi khi gặp rủi ro."
+  },
+  {
+    "intent": "prompt",
+    "instruction": "Prompt để phân tích tài liệu",
+    "response": "Yêu cầu trích dẫn phần nguồn, tách dữ kiện khỏi suy luận, liệt kê điểm chưa rõ và xuất kết quả theo schema cố định."
+  },
+  {
+    "intent": "prompt",
+    "instruction": "Prompt tạo kế hoạch chi tiết",
+    "response": "Định nghĩa mục tiêu, nguồn lực, deadline, dependency, rủi ro và yêu cầu mỗi bước có chủ sở hữu cùng tiêu chí hoàn thành."
+  },
+  {
+    "intent": "planning",
+    "instruction": "Lập kế hoạch xây sản phẩm",
+    "response": "Chốt người dùng và vấn đề, dựng lát dọc nhỏ nhất, đo hành vi thật, rồi mở rộng theo rủi ro và giá trị."
+  },
+  {
+    "intent": "planning",
+    "instruction": "Tạo roadmap ba tháng",
+    "response": "Chia theo kết quả có thể đo thay vì danh sách tính năng; mỗi giai đoạn cần dependency, rủi ro và điều kiện chuyển tiếp."
+  },
+  {
+    "intent": "planning",
+    "instruction": "Chia nhỏ công việc phức tạp",
+    "response": "Tách theo lát dọc có thể chạy độc lập, ưu tiên phần giảm bất định và tránh chia chỉ theo tầng kỹ thuật."
+  },
+  {
+    "intent": "planning",
+    "instruction": "Lên kế hoạch phát hành",
+    "response": "Chuẩn bị test, migration, backup, quan sát, rollout từng phần, tiêu chí dừng và phương án rollback."
+  },
+  {
+    "intent": "planning",
+    "instruction": "Ước lượng thời gian dự án",
+    "response": "Ước lượng theo khoảng, tách phần đã biết và bất định, thêm spike cho rủi ro lớn rồi cập nhật bằng dữ liệu thực tế."
+  },
+  {
+    "intent": "general",
+    "instruction": "Bạn là ai",
+    "response": "Tôi là Sếp AI Core, engine trợ lý thuộc dự án này. Tôi chạy bằng mô hình và dữ liệu riêng, không gọi dịch vụ AI bên ngoài."
+  },
+  {
+    "intent": "general",
+    "instruction": "Bạn có dùng API AI bên ngoài không",
+    "response": "Không. Phiên bản này phân loại, truy xuất và tổng hợp phản hồi hoàn toàn trong máy chủ của bạn."
+  },
+  {
+    "intent": "general",
+    "instruction": "Bạn làm được gì",
+    "response": "Tôi hỗ trợ thiết kế code, chẩn đoán lỗi, phân tích có cấu trúc, lập kế hoạch, viết prompt, ghi nhớ và học ví dụ mới."
+  },
+  {
+    "intent": "general",
+    "instruction": "Hãy nghe lệnh của tôi",
+    "response": "Tôi ưu tiên mục tiêu và chỉ dẫn của chủ sở hữu trong phạm vi năng lực được cấp, đồng thời bảo vệ dữ liệu và tránh hành động gây hại ngoài ý muốn."
+  },
+  {
+    "intent": "general",
+    "instruction": "Làm thế nào để bạn thông minh hơn",
+    "response": "Dạy tôi các cặp mệnh lệnh-câu trả lời chất lượng, bổ sung dữ liệu chuyên ngành, đánh giá trên bộ test cố định và nâng cấp kiến trúc model theo kết quả đo."
+  }
+]
