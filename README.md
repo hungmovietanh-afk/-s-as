@@ -59,8 +59,8 @@ Ví dụ mới được lưu ở `data/runtime/user_training.json`, sau đó mod
 
 ```text
 ai_engine.py             model, retrieval, memory và bộ xử lý chuyên môn
-main.py                  ASGI entrypoint cho nền tảng triển khai
-server.py                FastAPI server, bảo mật và API
+main.py                  FastAPI app, bảo mật, API và ASGI entrypoint
+server.py                local startup wrapper
 data/training_data.json  dữ liệu huấn luyện gốc thuộc dự án
 static/                  ứng dụng web
 tests/                   unit test
