@@ -31,7 +31,7 @@ async function api(path, options = {}) {
   });
   const payload = await response.json();
   if (!response.ok) {
-    throw new Error(payload.error || "Yêu cầu thất bại.");
+    throw new Error(payload.error || payload.detail || "Yêu cầu thất bại.");
   }
   return payload;
 }

@@ -1,9 +1,6 @@
-[project]
-name = "sep-ai"
-version = "0.1.0"
-description = "First-party browser AI assistant without external AI APIs or models"
-requires-python = ">=3.10"
-dependencies = []
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
 
 [tool.ruff]
 line-length = 100

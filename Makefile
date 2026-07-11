@@ -7,6 +7,6 @@ test:
 	python3 -m unittest discover -s tests -v
 
 lint:
-	python3 -m compileall -q ai_engine.py server.py tests
+	python3 -m compileall -q ai_engine.py main.py server.py tests
 
 check: lint test

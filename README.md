@@ -10,7 +10,7 @@ Web chatbot “AI nhân viên” chạy bằng engine tự xây dựng, không g
 - Bộ nhớ dài hạn dành cho chủ sở hữu.
 - Giao diện dạy thêm ví dụ để model tái huấn luyện ngay.
 - Web UI responsive, lịch sử chat lưu trên trình duyệt.
-- Chỉ dùng Python standard library; không có dependency runtime bên ngoài.
+- Engine AI không có dependency model/API bên ngoài; lớp web dùng FastAPI và Uvicorn.
 
 Đây là model nhỏ được huấn luyện từ số 0, không phải LLM và chưa thể đạt chất lượng của các model hàng đầu. Kiến trúc được thiết kế để dữ liệu, thuật toán, bộ nhớ và quá trình nâng cấp đều nằm dưới quyền kiểm soát của chủ sở hữu.
 
@@ -19,6 +19,7 @@ Web chatbot “AI nhân viên” chạy bằng engine tự xây dựng, không g
 Yêu cầu Python 3.10 trở lên.
 
 ```bash
+python3 -m pip install .
 python3 server.py
 ```
 
@@ -33,6 +34,10 @@ python3 server.py
 ```
 
 Nhập cùng token trong mục **Khóa chủ sở hữu** trên giao diện.
+
+Khi chạy trên Fly.io, app dùng `/data/runtime` để lưu dữ liệu trên volume và có
+thể đọc SHA-256 của khóa từ `data/owner_token.sha256`. Có thể thay thế bằng
+`BOSS_AI_OWNER_TOKEN` hoặc `BOSS_AI_OWNER_TOKEN_SHA256`.
 
 ## Kiểm tra
 
@@ -54,7 +59,8 @@ Ví dụ mới được lưu ở `data/runtime/user_training.json`, sau đó mod
 
 ```text
 ai_engine.py             model, retrieval, memory và bộ xử lý chuyên môn
-server.py                HTTP server và API
+main.py                  ASGI entrypoint cho nền tảng triển khai
+server.py                FastAPI server, bảo mật và API
 data/training_data.json  dữ liệu huấn luyện gốc thuộc dự án
 static/                  ứng dụng web
 tests/                   unit test
